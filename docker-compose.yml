@@ -1,0 +1,36 @@
+version: "3"
+services:
+  go:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dockerBackend
+    volumes:
+      - ./backend:/go/src/backend
+    working_dir: /go/src/backend
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - 8080:8080
+      - 2345:2345
+    security_opt:
+      - apparmor:unconfined
+    cap_add:
+      - SYS_PTRACE
+
+  mysql:
+    build: ./mysql
+    container_name: dockerMySQL
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: backend
+    ports:
+      - 13306:3306
+    volumes:
+      # docker volumeに保存する場合
+      # - mysql_volume:/var/lib/mysql
+      # ローカルフォルダに保存する場合
+      - ./data:/var/lib/mysql
+# volumes:
+#   mysql_volume:
