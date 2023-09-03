@@ -1,7 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"github.com/UmetsuJunya/attendance-management-api/backend/cmd"
+)
 
 func main() {
-	fmt.Println("Hello world")
+	cmd.Execute()
 }

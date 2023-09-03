@@ -6,12 +6,12 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-# Just plain old shell command. You could use `make` as well.
+# Just plain old shell command. You could use `make` as welsl.
 cmd = "go build -o ./tmp/main ."
 # Binary file yields from `cmd`.
-bin = "tmp/main"
+bin = "tmp/main serve"
 # Customize binary, can setup environment variables when run your app.
-full_bin = "APP_ENV=dev APP_USER=air ./tmp/main"
+full_bin = "APP_ENV=dev APP_USER=air ./tmp/main serve"
 # Watch these filename extensions.
 include_ext = ["go", "tpl", "tmpl", "html"]
 # Ignore these filename extensions or directories.
